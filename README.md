@@ -1,1 +1,0 @@
-# student-score-manager

@@ -10,6 +10,6 @@ package com.mycompany.main;
  */
 public class Main {
 public static void main(String[] args) {
-        System.out.println("Chào Nguyễn Kim Hiếu");
+        System.out.println("Hello Nguyễn Kim Hiếu");
     }
 }

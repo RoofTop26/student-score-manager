@@ -18,38 +18,38 @@ public class Main {
         Student[] students = new Student[100];
         int Number = 5;
 
-        students[0] = new Student();
-        students[0].setName("Nguyen Kim Hieu");
-        students[0].setStudentId(123456);
-        students[0].setScores(new double[]{8.25, 10, 9.5, 8, 7.5});
+        students[0] = new Student(
+                "Nguyen Kim Hieu",
+                123456,
+                new double[]{8.25, 10, 9.5, 8, 7.5});
 
-        students[1] = new Student();
-        students[1].setName("Tran Binh An");
-        students[1].setStudentId(123457);
-        students[1].setScores(new double[]{7, 8, 9, 6, 8});
+        students[1] = new Student(
+                "Tran Binh An",
+                123457,
+                new double[]{7, 8, 9, 6, 8});
 
-        students[2] = new Student();
-        students[2].setName("Pham Le Thao Nguyen");
-        students[2].setStudentId(123458);
-        students[2].setScores(new double[]{5, 6, 7, 8, 5});
+        students[2] = new Student(
+                "Pham Le Thao Nguyen",
+                123458,
+                new double[]{5, 6, 7, 8, 5});
 
-        students[3] = new Student();
-        students[3].setName("Nguyen Trong Hoang");
-        students[3].setStudentId(123459);
-        students[3].setScores(new double[]{4, 5, 6, 4, 5});
+        students[3] = new Student(
+                "Nguyen Trong Hoang",
+                123459,
+                new double[]{4, 5, 6, 4, 5});
 
-        students[4] = new Student();
-        students[4].setName("Nguyen Tien Dung");
-        students[4].setStudentId(123460);
-        students[4].setScores(new double[]{9, 9, 10, 8, 9});
+        students[4] = new Student(
+                "Nguyen Tien Dung",
+                123460,
+                new double[]{9, 9, 10, 8, 9});
 
         double[] diemTest = students[0].getScores();
 
-        System.out.println("Diem truoc khi sua: " + students[0].getScores()[0]);
+        System.out.println("Diem goc: " + students[0].getScores()[0]);
 
         diemTest[0] = 100;
 
-        System.out.println("Diem sau khi sua: " + students[0].getScores()[0]);
+        System.out.println("Diem sau test: " + students[0].getScores()[0]);
 
         for (int i = 0; i < Number; i++) {
             double tong = 0;
@@ -140,16 +140,12 @@ public class Main {
                         if (ten.equalsIgnoreCase("dung")) {
                             break;
                         }
-
-                        Student student = new Student();
-
-                        student.setName(ten);
-
                         System.out.print("Nhap ma sinh vien: ");
-                        student.setStudentId(sc.nextInt());
+                        int maSV = sc.nextInt();
 
                         double[] scores = new double[5];
                         double sum = 0;
+
                         for (int i = 0; i < 5; i++) {
 
                             System.out.print("Nhap diem mon " + (i + 1) + ": ");
@@ -158,7 +154,7 @@ public class Main {
 
                         }
 
-                        student.setScores(scores);
+                        Student student = new Student(ten, maSV, scores);
 
                         double average = sum / 5;
 

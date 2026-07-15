@@ -15,6 +15,20 @@ public class Student {
     private double[] scores;
     private boolean isPassed;
 
+    public Student() {
+
+    }
+
+    public Student(String name, int studentId, double[] scores) {
+        this.name = name;
+        this.studentId = studentId;
+        this.scores = scores.clone();
+    }
+
+    public Student(String name, int studentId) {
+        this(name, studentId, new double[5]);
+    }
+
     public String getName() {
         return name;
     }
@@ -24,7 +38,7 @@ public class Student {
     }
 
     public double[] getScores() {
-        return scores;     
+        return scores.clone();
     }
 
     public boolean isPassed() {
@@ -40,7 +54,7 @@ public class Student {
     }
 
     public void setScores(double[] scores) {
-        this.scores = scores;
+        this.scores = scores.clone();
     }
 
     public void setPassed(boolean passed) {

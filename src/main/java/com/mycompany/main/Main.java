@@ -45,6 +45,8 @@ public class Main {
                 new double[]{9, 9, 10, 8, 9},
                 7000000);
 
+        System.out.println(students[0]);
+        
         for (int i = 0; i < Number; i++) {
             double tong = 0;
 

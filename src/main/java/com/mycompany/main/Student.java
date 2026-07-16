@@ -4,6 +4,8 @@
  */
 package com.mycompany.main;
 
+import java.util.Arrays;
+
 /**
  *
  * @author DELL
@@ -59,5 +61,13 @@ public class Student {
 
     public void setPassed(boolean passed) {
         isPassed = passed;
+    }
+
+    @Override
+    public String toString() {
+        return "Ten: " + name
+                + "\nMa SV: " + studentId
+                + "\nDiem: " + Arrays.toString(scores)
+                + "\nKet qua: " + (isPassed ? "Dat" : "Khong dat");
     }
 }

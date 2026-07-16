@@ -43,13 +43,7 @@ public class Main {
                 123460,
                 new double[]{9, 9, 10, 8, 9});
 
-        double[] diemTest = students[0].getScores();
-
-        System.out.println("Diem goc: " + students[0].getScores()[0]);
-
-        diemTest[0] = 100;
-
-        System.out.println("Diem sau test: " + students[0].getScores()[0]);
+        System.out.println(students[0]);
 
         for (int i = 0; i < Number; i++) {
             double tong = 0;

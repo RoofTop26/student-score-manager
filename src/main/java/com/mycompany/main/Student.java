@@ -63,7 +63,6 @@ public class Student {
         isPassed = passed;
     }
 
-    @Override
     public String toString() {
         return "Ten: " + name
                 + "\nMa SV: " + studentId

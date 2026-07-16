@@ -18,10 +18,11 @@ public class Main {
         Student[] students = new Student[100];
         int Number = 5;
 
-        students[0] = new Student(
+        students[0] = new ScholarshipStudent(
                 "Nguyen Kim Hieu",
                 123456,
-                new double[]{8.25, 10, 9.5, 8, 7.5});
+                new double[]{8.25, 10, 9.5, 8, 7.5},
+                5000000);
 
         students[1] = new Student(
                 "Tran Binh An",
@@ -38,12 +39,11 @@ public class Main {
                 123459,
                 new double[]{4, 5, 6, 4, 5});
 
-        students[4] = new Student(
+        students[4] = new ScholarshipStudent(
                 "Nguyen Tien Dung",
                 123460,
-                new double[]{9, 9, 10, 8, 9});
-
-        System.out.println(students[0]);
+                new double[]{9, 9, 10, 8, 9},
+                7000000);
 
         for (int i = 0; i < Number; i++) {
             double tong = 0;
@@ -78,37 +78,20 @@ public class Main {
                     int scorePass = 0;
                     int scoreFail = 0;
 
-                    for (int k = 0; k < Number; k++) {
+                    for (Student student : students) {
 
-                        Student student = students[k];
+                        if (student == null) {
+                            break;
+                        }
 
                         System.out.println("----------------------");
-                        System.out.println("Ten: " + student.getName());
-                        System.out.println("Ma SV: " + student.getStudentId());
-
-                        double tong = 0;
-                        int mon = 1;
-
-                        for (double diem : student.getScores()) {
-
-                            System.out.println("Mon " + mon + ": " + diem);
-                            tong += diem;
-                            mon++;
-
-                        }
-
-                        double average = tong / student.getScores().length;
-
-                        System.out.println("Diem TB: " + average);
+                        System.out.println(student);
 
                         if (student.isPassed()) {
-                            System.out.println("Ket qua: Dat");
                             scorePass++;
                         } else {
-                            System.out.println("Ket qua: Khong dat");
                             scoreFail++;
                         }
-
                     }
 
                     System.out.println("----------------------");

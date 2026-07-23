@@ -3,6 +3,7 @@
  */
 package com.mycompany.main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -15,48 +16,48 @@ public class Main {
 
         final double DIEM_DAT = 5.0;
 
-        Student[] students = new Student[100];
-        int Number = 5;
+        ArrayList<Student> students = new ArrayList<>();
 
-        students[0] = new ScholarshipStudent(
+        students.add(new ScholarshipStudent(
                 "Nguyen Kim Hieu",
                 123456,
                 new double[]{8.25, 10, 9.5, 8, 7.5},
-                5000000);
+                5000000));
 
-        students[1] = new Student(
+        students.add(new Student(
                 "Tran Binh An",
                 123457,
-                new double[]{7, 8, 9, 6, 8});
+                new double[]{7, 8, 9, 6, 8}));
 
-        students[2] = new Student(
+        students.add(new Student(
                 "Pham Le Thao Nguyen",
                 123458,
-                new double[]{5, 6, 7, 8, 5});
+                new double[]{5, 6, 7, 8, 5}));
 
-        students[3] = new Student(
+        students.add(new Student(
                 "Nguyen Trong Hoang",
                 123459,
-                new double[]{4, 5, 6, 4, 5});
+                new double[]{4, 5, 6, 4, 5}));
 
-        students[4] = new ScholarshipStudent(
+        students.add(new ScholarshipStudent(
                 "Nguyen Tien Dung",
                 123460,
                 new double[]{9, 9, 10, 8, 9},
-                7000000);
+                7000000));
 
-        System.out.println(students[0]);
-        
-        for (int i = 0; i < Number; i++) {
+        System.out.println(students.get(0));
+
+        for (int i = 0; i < students.size(); i++) {
+
             double tong = 0;
 
-            for (int j = 0; j < students[i].getScores().length; j++) {
-                tong += students[i].getScores()[j];
+            for (int j = 0; j < students.get(i).getScores().length; j++) {
+                tong += students.get(i).getScores()[j];
             }
 
-            double average = tong / students[i].getScores().length;
+            double average = tong / students.get(i).getScores().length;
 
-            students[i].setPassed(average >= DIEM_DAT);
+            students.get(i).setPassed(average >= DIEM_DAT);
         }
 
         Scanner sc = new Scanner(System.in);
@@ -82,10 +83,6 @@ public class Main {
 
                     for (Student student : students) {
 
-                        if (student == null) {
-                            break;
-                        }
-
                         System.out.println("----------------------");
                         System.out.println(student);
 
@@ -108,17 +105,13 @@ public class Main {
 
                     while (true) {
 
-                        if (Number >= students.length) {
-                            System.out.println("Danh sach da day!");
-                            break;
-                        }
-
                         System.out.print("Nhap ten sinh vien (Nhap 'dung' de ket thuc): ");
                         String ten = sc.nextLine();
 
                         if (ten.equalsIgnoreCase("dung")) {
                             break;
                         }
+
                         System.out.print("Nhap ma sinh vien: ");
                         int maSV = sc.nextInt();
 
@@ -139,8 +132,7 @@ public class Main {
 
                         student.setPassed(average >= DIEM_DAT);
 
-                        students[Number] = student;
-                        Number++;
+                        students.add(student);
 
                         sc.nextLine();
 

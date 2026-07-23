@@ -8,7 +8,7 @@ package com.mycompany.main;
  *
  * @author DELL
  */
-public class ScholarshipStudent extends Student {
+public class ScholarshipStudent extends Student implements CoHocBong {
 
     private double mucHocBong;
 
@@ -16,7 +16,6 @@ public class ScholarshipStudent extends Student {
             double[] scores, double mucHocBong) {
 
         super(name, studentId, scores);
-
         this.mucHocBong = mucHocBong;
     }
 
@@ -28,8 +27,13 @@ public class ScholarshipStudent extends Student {
         this.mucHocBong = mucHocBong;
     }
 
+    @Override
+    public String thongTinHocBong() {
+        return "Muc hoc bong: " + mucHocBong;
+    }
+
+    @Override
     public String toString() {
-        return super.toString()
-                + "\nMuc hoc bong: " + mucHocBong;
+        return super.toString();
     }
 }

@@ -50,7 +50,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        int chon=0;
+        int chon = 0;
 
         do {
 
@@ -62,7 +62,7 @@ public class Main {
                 System.out.print("Nhap lua chon: ");
                 chon = sc.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Lua chon phai la so!");
+                System.out.println("Lua chon khong hop le");
                 sc.nextLine();
                 continue;
             }
@@ -78,6 +78,10 @@ public class Main {
 
                         System.out.println("----------------------");
                         System.out.println(student);
+
+                        if (student instanceof CoHocBong) {
+                            System.out.println(((CoHocBong) student).thongTinHocBong());
+                        }
 
                         if (student.isPassed()) {
                             scorePass++;

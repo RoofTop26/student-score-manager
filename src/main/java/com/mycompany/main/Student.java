@@ -18,7 +18,6 @@ public class Student {
     private boolean isPassed;
 
     public Student() {
-
     }
 
     public Student(String name, int studentId, double[] scores) {
@@ -43,8 +42,19 @@ public class Student {
         return scores.clone();
     }
 
+    public double getAverage() {
+
+        double tong = 0;
+
+        for (double diem : scores) {
+            tong += diem;
+        }
+
+        return tong / scores.length;
+    }
+
     public boolean isPassed() {
-        return isPassed;
+        return getAverage() >= 5.0;
     }
 
     public void setName(String name) {
@@ -59,14 +69,11 @@ public class Student {
         this.scores = scores.clone();
     }
 
-    public void setPassed(boolean passed) {
-        isPassed = passed;
-    }
-
+    @Override
     public String toString() {
         return "Ten: " + name
                 + "\nMa SV: " + studentId
                 + "\nDiem: " + Arrays.toString(scores)
-                + "\nKet qua: " + (isPassed ? "Dat" : "Khong dat");
+                + "\nKet qua: " + (isPassed() ? "Dat" : "Khong dat");
     }
 }

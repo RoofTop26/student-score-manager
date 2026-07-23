@@ -5,6 +5,7 @@ package com.mycompany.main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 /**
  *
@@ -47,22 +48,9 @@ public class Main {
 
         System.out.println(students.get(0));
 
-        for (int i = 0; i < students.size(); i++) {
-
-            double tong = 0;
-
-            for (int j = 0; j < students.get(i).getScores().length; j++) {
-                tong += students.get(i).getScores()[j];
-            }
-
-            double average = tong / students.get(i).getScores().length;
-
-            students.get(i).setPassed(average >= DIEM_DAT);
-        }
-
         Scanner sc = new Scanner(System.in);
 
-        int chon;
+        int chon=0;
 
         do {
 
@@ -70,9 +58,14 @@ public class Main {
             System.out.println("1. Xem danh sach");
             System.out.println("2. Them sinh vien");
             System.out.println("3. Thoat");
-            System.out.print("Nhap lua chon: ");
-
-            chon = sc.nextInt();
+            try {
+                System.out.print("Nhap lua chon: ");
+                chon = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Lua chon phai la so!");
+                sc.nextLine();
+                continue;
+            }
 
             switch (chon) {
 
@@ -112,25 +105,39 @@ public class Main {
                             break;
                         }
 
-                        System.out.print("Nhap ma sinh vien: ");
-                        int maSV = sc.nextInt();
+                        int maSV;
+
+                        try {
+                            System.out.print("Nhap ma sinh vien: ");
+                            maSV = sc.nextInt();
+                        } catch (InputMismatchException e) {
+                            System.out.println("Ma sinh vien phai la so!");
+                            sc.nextLine();
+                            continue;
+                        }
 
                         double[] scores = new double[5];
-                        double sum = 0;
+                        boolean hopLe = true;
 
                         for (int i = 0; i < 5; i++) {
 
-                            System.out.print("Nhap diem mon " + (i + 1) + ": ");
-                            scores[i] = sc.nextDouble();
-                            sum += scores[i];
+                            try {
+                                System.out.print("Nhap diem mon " + (i + 1) + ": ");
+                                scores[i] = sc.nextDouble();
+                            } catch (InputMismatchException e) {
+                                System.out.println("Diem phai la so!");
+                                sc.nextLine();
+                                hopLe = false;
+                                break;
+                            }
 
                         }
 
+                        if (!hopLe) {
+                            continue;
+                        }
+
                         Student student = new Student(ten, maSV, scores);
-
-                        double average = sum / 5;
-
-                        student.setPassed(average >= DIEM_DAT);
 
                         students.add(student);
 
